@@ -27,3 +27,27 @@ var cloneGraph = function(node, map = new Map()) {
   }
   return map.get(node)
 };
+
+var cloneGraph = function(node) {
+    
+  function dfsHelper(root) {
+      if(root === null) {
+          return null;
+      }
+      
+      if(visited[root.val]) {
+          return visited[root.val];
+      }
+      
+      let cloned = new Node(root.val);
+      visited[cloned.val] = cloned;
+      
+      for (let edge of root.neighbors) {
+          cloned.neighbors.push(dfsHelper(edge));
+      }
+      return cloned;    
+  }
+  
+  const visited = {}
+  return dfsHelper(node);
+};
