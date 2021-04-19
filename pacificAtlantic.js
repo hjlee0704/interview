@@ -28,6 +28,8 @@ var pacificAtlantic = function(matrix) {
                arr[dr][dc] >= val) callDFS(dr, dc, arr);
         }
     }
+
+    //
     
     for(let c = 1; c < cNum-1; c++) {
         callDFS(rNum-1, c, atlantic); // bottom 
