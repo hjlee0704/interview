@@ -2,6 +2,25 @@
 
 
 
+var isBalanced = function(root) {
+  const check = (node) => {
+      if(node) {
+          const [left, lBalanced] = check(node.left);
+          if(lBalanced === false) return [0, false];
+          
+          const [right, rBalanced] = check(node.right);
+          if(rBalanced === false) return [0, false];
+
+          if(Math.abs(left - right) > 1)
+              return [0, false];
+          
+          return [Math.max(left, right) + 1, true];
+      }
+      return [0, true];
+  }
+  
+  return check(root)[1];
+};
 
 
 
