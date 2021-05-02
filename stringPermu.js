@@ -22,3 +22,6 @@ function getPermutations(string) {
 
   return permutations;
 }
+
+
+//comment
