@@ -33,3 +33,6 @@ function rand7() {
     return outcomeNumber % 7 + 1;
   }
 }
+
+
+//test
