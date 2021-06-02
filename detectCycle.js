@@ -62,3 +62,25 @@ Graph.prototype._detectCycleUtil = function(vertex, visited, recStack) {
   recStack[vertex] = false;
   return false;
 }
+
+
+
+
+const graph = new Graph()
+
+graph.addVertex('A')
+graph.addVertex('B')
+graph.addVertex('C')
+graph.addVertex('D')
+graph.addVertex('E')
+
+graph.addEdge('A', 'B')
+graph.addEdge('D', 'E')
+graph.addEdge('C', 'E')
+graph.addEdge('A', 'D')
+graph.addEdge('A', 'C')
+graph.addEdge('E', 'B')
+graph.addEdge('D', 'B')
+graph.addEdge('E', 'A')
+
+console.log(graph.detectCycle())
