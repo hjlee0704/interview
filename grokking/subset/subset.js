@@ -18,6 +18,70 @@ function find_subsets(nums) {
   return subsets;
 }
 
+const find_subsets = function(nums) {
+  subsets = [];
+  // TODO: Write your code here
+  //subset.push([]);
+  
+    dfs(0, []);
+
+
+  function dfs(currIndex, list) {
+    console.log(list);
+    if (currIndex > nums.length) return;
+   // subsets.push(list);
+    
+    subsets.push([...list]);
+    for (let index = currIndex; index < nums.length; index++) {
+      list.push(nums[index]);
+      dfs(index+1, list);
+      list.pop();
+    }
+  }
+ console.log(subsets);
+  return subsets;
+};
+
+//backtrack method
+const subsets = function(nums) {
+  const output = [];
+  
+function backtrack(start, list){
+    if(start > nums.length) return;
+    output.push([...list])
+    for(let idx = start; idx < nums.length; idx++){
+        list.push(nums[idx])
+        backtrack(idx+1, list)
+        list.pop()
+    }
+} 
+ backtrack(0,[]) 
+ return output
+};
+
+//backtracking dfs
+
+function subsets(nums: number[]): number[][] {
+  const path: number[] = [];
+  const result: number[][] = [];
+  dfsPowerset(0, path, result, nums);
+  return result;
+}
+
+function dfsPowerset(
+  i: number,
+  path: number[],
+  result: number[][],
+  nums: number[]
+) {
+  result.push(path.slice());
+  for (let index = i; index < nums.length; index++) {
+    path.push(nums[index]);
+    dfsPowerset(index + 1, path, result, nums);
+    path.pop();
+  }
+}
+
 
 console.log('Here is the list of subsets: ');
 let result = find_subsets([1, 3]);
