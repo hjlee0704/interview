@@ -44,3 +44,31 @@ RandomizedSet.prototype.getRandom = function() {
   let randomIndex = Math.floor(len * Math.random());
   return this.list[randomIndex];
 };
+
+var RandomizedSet = function() {
+  this.data = {}; 
+};
+
+RandomizedSet.prototype.insert = function(val) {
+ if (this.data[val] == undefined) {
+   this.data[val]=1;
+   return true;
+ } else {return false;}
+};
+
+
+RandomizedSet.prototype.remove = function(val) {
+ if (this.data[val] == undefined) {
+   return false;
+ } else {
+   delete this.data[val];
+   return true;
+ }
+};
+
+RandomizedSet.prototype.getRandom = function() {
+ let keys = Object.keys(this.data);
+ if (keys.length==0) return false;
+ if (keys.length==1) return keys[0];
+ return keys[Math.floor(Math.random() * (keys.length))];
+};
