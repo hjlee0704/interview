@@ -26,3 +26,42 @@ const bfs = (node, level, arr) => {
       bfs(node.right, level +1, arr)
   }
 }
+
+
+
+
+
+
+
+
+
+var visited = new Map();
+var visiting = new Map();
+
+for(var key of courseGraph.keys()){
+    if(hasCycle(key))return false;
+}
+
+function hasCycle(key){
+    if(visiting.has(key) && visiting.get(key)) {
+        return true;
+    }
+    if(visited.has(key) && visited.get(key)) {
+        return false;
+    }
+    
+    visiting.set(key, true);
+    
+    var adj = courseGraph.get(key);
+    if(adj != undefined){
+        for(var v of adj){
+            if(hasCycle(v))return true;
+        }
+    }
+    
+    visited.set(key, true);
+    visiting.set(key, false);
+    return false;
+}
+
+return true;

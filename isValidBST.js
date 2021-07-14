@@ -171,14 +171,14 @@ def is_binary_search_tree(root):
     return True
 
 
-    def is_binary_search_tree(root,
+def is_binary_search_tree(root,
       lower_bound=-float('inf'),
       upper_bound=float('inf')):
-if not root:
-return True
+    if not root:
+    return True
 
-if (root.value >= upper_bound or root.value <= lower_bound):
-return False
+    if (root.value >= upper_bound or root.value <= lower_bound):
+    return False
 
-return (is_binary_search_tree(root.left, lower_bound, root.value)
-and is_binary_search_tree(root.right, root.value, upper_bound))
+    return (is_binary_search_tree(root.left, lower_bound, root.value)
+    and is_binary_search_tree(root.right, root.value, upper_bound))
