@@ -32,6 +32,7 @@ function search_pair(arr, target_sum, left, triplets) {
       right -= 1; // we need a pair with a smaller sum
     }
   }
+  //
 }
 
 
