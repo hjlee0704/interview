@@ -44,3 +44,45 @@ var canFinish = function(numCourses, prerequisites) {
   return false;
 
 }
+
+//dfs
+
+var canFinish = function(numCourses, prerequisites) {
+  const arr =  Array.from({length:numCourses}).map(()=>new Array());
+  
+  for(let i=0;i<prerequisites.length;++i){
+      arr[prerequisites[i][0]].push(prerequisites[i][1])
+  }
+  console.log(arr);
+  const visited = new Array(numCourses).fill(0); // initially all the nodes are unvisited
+  
+  for(let i=0;i<numCourses;i++){
+      if(visited[i]===0){
+          if(isDeadLock(visited,arr,i)) return false;
+      }        
+  }
+  
+  return true;
+  
+  function isDeadLock(visited,arr,currIdx){
+      
+  // deadlock formed
+      if(visited[currIdx]===2){
+          return true;
+      }
+      // currently visiting
+      visited[currIdx]=2;
+      
+      for(let i=0;i<arr[currIdx].length;i++){
+          if(visited[arr[currIdx][i]]!==1){
+              if(isDeadLock(visited,arr,arr[currIdx][i])){
+                  return true
+              }
+          }
+      }
+      // already visited
+      visited[currIdx]=1;
+      return false
+  }
+  
+};
